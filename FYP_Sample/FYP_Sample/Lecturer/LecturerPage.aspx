@@ -18,7 +18,7 @@
             <asp:Button ID="text_file" runat="server" Text="Upload Files" OnClick="text_file_Click" />
             <br />
             <br />
-            <asp:Button ID="text_forum" runat="server" Text="Forum Discussion" />
+            <asp:Button ID="text_forum" runat="server" Text="Forum Discussion" OnClick="text_forum_Click" />
             <br />
             <br />
             <asp:Button ID="text_upload" runat="server" Text="Upload Lecturer Video" />

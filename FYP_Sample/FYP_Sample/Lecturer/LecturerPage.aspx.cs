@@ -43,4 +43,9 @@ public partial class Lecturer_LecturerPage : System.Web.UI.Page
     {
         Response.Redirect("UploadFile.aspx");
     }
+
+    protected void text_forum_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("LecturerForum.aspx");
+    }
 }

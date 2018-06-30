@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -40,5 +41,31 @@ public partial class Lecturer_LecturerForum : System.Web.UI.Page
     {
         GridView1.DataSource = SqlDataSource4;
         GridView1.DataBind();
+    }
+
+    protected void button_subtopic_Click(object sender, EventArgs e)
+    {
+        GridView1.DataSource = SqlDataSource5;
+        GridView1.DataBind();
+    }
+
+    protected void button_submit_Click(object sender, EventArgs e)
+    {
+        string post = text_post.Text;
+        DateTime current = DateTime.Now;
+        string sqlDate = current.ToString("yyyy-MM-dd HH:mm:ss");
+        int subtopic = Convert.ToInt32(drop_chosen.SelectedValue.ToString());
+
+        int id = Convert.ToInt32(Session["user_id"]);
+
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+        con.Open();
+        string query = "INSERT INTO Forum (forum_post, user_id, forum_datetime, sub_id)" +
+            " VALUES ('" + post+ "', " +id + ", '" + sqlDate + "', " + subtopic + ")";
+        SqlCommand cmd = new SqlCommand(query, con);
+        cmd.CommandType = CommandType.Text;
+        cmd.ExecuteNonQuery();
+        con.Close();
+        Response.Redirect("LecturerForum.aspx");
     }
 }
