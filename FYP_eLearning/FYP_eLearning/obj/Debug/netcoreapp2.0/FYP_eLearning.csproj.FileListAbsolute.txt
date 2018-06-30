@@ -1,0 +1,11 @@
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\bin\Debug\netcoreapp2.0\FYP_eLearning.deps.json
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\bin\Debug\netcoreapp2.0\FYP_eLearning.runtimeconfig.json
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\bin\Debug\netcoreapp2.0\FYP_eLearning.runtimeconfig.dev.json
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\bin\Debug\netcoreapp2.0\FYP_eLearning.dll
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\bin\Debug\netcoreapp2.0\FYP_eLearning.pdb
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.csprojAssemblyReference.cache
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.csproj.CoreCompileInputs.cache
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.AssemblyInfoInputs.cache
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.AssemblyInfo.cs
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.dll
+C:\Users\YWL\source\repos\FYP_eLearning\FYP_eLearning\obj\Debug\netcoreapp2.0\FYP_eLearning.pdb

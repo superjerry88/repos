@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FYP_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="subject_id" />
+          </Key>
+          <Property Name="subject_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject_name" Type="varchar" MaxLength="50" />
+          <Property Name="subject_maker" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Videos">
+          <Key>
+            <PropertyRef Name="video_id" />
+          </Key>
+          <Property Name="video_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="video_name" Type="varchar" MaxLength="50" />
+          <Property Name="video_customname" Type="varchar" MaxLength="50" />
+          <Property Name="video_type" Type="varchar(max)" />
+          <Property Name="video_data" Type="varchar(max)" />
+          <Property Name="subject_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Videos__subject___6FE99F9F">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Videos" Type="Self.Videos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subject_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FYP_dbModelStoreContainer">
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Videos" EntityType="Self.Videos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Videos__subject___6FE99F9F" Association="Self.FK__Videos__subject___6FE99F9F">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FYP_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="subject_id" />
+          </Key>
+          <Property Name="subject_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subject_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="subject_maker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Videos" Relationship="Self.FK__Videos__subject___6FE99F9F" FromRole="Subjects" ToRole="Videos" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="video_id" />
+          </Key>
+          <Property Name="video_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="video_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="video_customname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="video_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="video_data" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subject_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Videos__subject___6FE99F9F" FromRole="Videos" ToRole="Subjects" />
+        </EntityType>
+        <Association Name="FK__Videos__subject___6FE99F9F">
+          <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Videos" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="subject_id" />
+            </Principal>
+            <Dependent Role="Videos">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FYP_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="Videos" EntityType="Self.Video" />
+          <AssociationSet Name="FK__Videos__subject___6FE99F9F" Association="Self.FK__Videos__subject___6FE99F9F">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Videos" EntitySet="Videos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FYP_dbModelStoreContainer" CdmEntityContainer="FYP_dbEntities">
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="FYP_dbModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="subject_name" ColumnName="subject_name" />
+                <ScalarProperty Name="subject_maker" ColumnName="subject_maker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Videos">
+            <EntityTypeMapping TypeName="FYP_dbModel.Video">
+              <MappingFragment StoreEntitySet="Videos">
+                <ScalarProperty Name="video_id" ColumnName="video_id" />
+                <ScalarProperty Name="video_name" ColumnName="video_name" />
+                <ScalarProperty Name="video_customname" ColumnName="video_customname" />
+                <ScalarProperty Name="video_type" ColumnName="video_type" />
+                <ScalarProperty Name="video_data" ColumnName="video_data" />
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
